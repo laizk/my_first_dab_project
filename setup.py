@@ -30,8 +30,8 @@ setup(
     package_dir={"": "src"},
     entry_points={
         "packages": [
-            "main=my_first_dab_project.main:main",
-            "main=demo_project_01.main:main",            
+            "main1=my_first_dab_project.main:main",
+            "main2=demo_project_01.main:main",            
         ],
     },
     install_requires=[
