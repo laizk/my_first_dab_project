@@ -1,11 +1,11 @@
 # This workflow validates, deploys, and runs the specified bundle
-# within a pre-production target named "dev".
-name: 'Dev deployment'
+# within a pre-production target named "prod".
+name: 'Prod deployment'
 
 # Ensure that only a single job or workflow using the same concurrency group
 # runs at a time.
 concurrency:
-  group: dev-deployment
+  group: prod-deployment
   cancel-in-progress: true
 
 # Trigger this workflow whenever a pull request is opened against the repo's
@@ -13,7 +13,7 @@ concurrency:
 on:
   push:
     branches:
-      - development
+      - master
 
 jobs:
   test_package:
@@ -42,8 +42,8 @@ jobs:
 
       - name: Run tests
         env:
-           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
-           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }} 
+           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_PROD }}
+           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN_PROD }} 
            DATABRICKS_SERVERLESS_COMPUTE_ID: auto    
         run: |
           # Run the tests defined in the package.
@@ -70,7 +70,7 @@ jobs:
       - name: Setup Databricks CLI
         uses: databricks/setup-cli@main
 
-      # Deploy the bundle to the "dev" target as defined
+      # Deploy the bundle to the "prod" target as defined
       # in the bundle's settings file.
       - name: Deploy bundle
         # The "databricks bundle deploy" command will automatically validate the bundle.
@@ -79,7 +79,7 @@ jobs:
         working-directory: .
         env:
           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev
+          DATABRICKS_BUNDLE_ENV: prod
 
   # Validate, deploy, and then run the bundle.
   pipeline_update:
@@ -102,11 +102,11 @@ jobs:
       - run: databricks bundle run demo_project_01_pipeline --refresh-all
         working-directory: .
         env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN_PROD }}
+          DATABRICKS_BUNDLE_ENV: prod
 
       - run: databricks bundle run demo_project_01_job
         working-directory: .
         env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
-          DATABRICKS_BUNDLE_ENV: dev          
+          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN_PROD }}
+          DATABRICKS_BUNDLE_ENV: prod          
