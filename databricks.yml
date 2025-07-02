@@ -22,9 +22,11 @@ targets:
   prod:
     mode: production
     workspace:
-      host: https://dbc-d1c76f56-4f03.cloud.databricks.com
-      # We explicitly deploy to /Workspace/Users/kristoffer.laiz@outlook.com to make sure we only have a single copy.
-      root_path: /Workspace/Users/kristoffer.laiz@outlook.com/.bundle/${bundle.name}/${bundle.target}
-    permissions:
-      - user_name: kristoffer.laiz@outlook.com
-        level: CAN_MANAGE
+      host: https://dbc-d2b217aa-db08.cloud.databricks.com
+      # We explicitly deploy to /Workspace/Users/kristoffer.laiz@gmail.com to make sure we only have a single copy.
+      root_path: /Workspace/Users/kristoffer.laiz@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    run_as:
+      service_principal_name: dose3d81362c110d08aec1adb4ba20d0e719
+    # permissions:
+    #   - user_name: kristoffer.laiz@gmail.com
+    #     level: CAN_MANAGE
