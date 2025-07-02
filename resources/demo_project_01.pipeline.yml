@@ -1,0 +1,13 @@
+resources:
+  pipelines:
+    demo_project_01_pipeline:
+      name: demo_project_01_pipeline
+      catalog: weather_catalog
+      schema: forecast_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/demo_project_01/demo_project_01_dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src/demo_project_01
