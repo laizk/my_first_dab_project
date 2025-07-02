@@ -41,10 +41,14 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Run tests
+        env:
+           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
+           DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}      
         run: |
           # Run the tests defined in the package.
           # This will automatically discover and run tests in the "tests" directory.
           python -m pytest
+
 
   # Used by the "pipeline_update" job to deploy the bundle.
   # Bundle validation is automatically performed as part of this deployment.
