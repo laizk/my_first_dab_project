@@ -1,7 +1,7 @@
 # The main job for my_first_dab_project.
 resources:
   jobs:
-    my_first_dab_project_job:
+    demo_project_01_job:
       name: demo_project_01_job
 
       # trigger:
