@@ -14,6 +14,7 @@ sys.path.append("./src")
 
 import datetime
 import my_first_dab_project
+import demo_project_01
 
 local_version = datetime.datetime.utcnow().strftime("%Y%m%d.%H%M%S")
 
@@ -30,6 +31,7 @@ setup(
     entry_points={
         "packages": [
             "main=my_first_dab_project.main:main",
+            "main=demo_project_01.main:main",            
         ],
     },
     install_requires=[
