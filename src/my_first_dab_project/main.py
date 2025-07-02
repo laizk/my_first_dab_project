@@ -18,7 +18,7 @@ def get_spark() -> SparkSession:
 
 
 def main():
-    get_taxis(get_spark()).show(5)
+    get_taxis(get_spark()).show(10)
 
 
 if __name__ == "__main__":
