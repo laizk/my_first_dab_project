@@ -19,7 +19,7 @@ import demo_project_01
 local_version = datetime.datetime.utcnow().strftime("%Y%m%d.%H%M%S")
 
 setup(
-    name="my_first_dab_project",
+    name="my_demo_package",
     # We use timestamp as Local version identifier (https://peps.python.org/pep-0440/#local-version-identifiers.)
     # to ensure that changes to wheel package are picked up when used on all-purpose clusters
     version=my_first_dab_project.__version__ + "+" + local_version,

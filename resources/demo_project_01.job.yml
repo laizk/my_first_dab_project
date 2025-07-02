@@ -24,8 +24,8 @@ resources:
             - task_key: refresh_pipeline
           environment_key: default
           python_wheel_task:
-            package_name: demo_project_01
-            entry_point: main
+            package_name: my_demo_package
+            entry_point: main2
 
       # A list of task execution environment specifications that can be referenced by tasks of this job.
       environments:
