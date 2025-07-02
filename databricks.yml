@@ -27,6 +27,6 @@ targets:
       root_path: /Workspace/Users/kristoffer.laiz@gmail.com/.bundle/${bundle.name}/${bundle.target}
     run_as:
       service_principal_name: 4b7ae9f8-1778-4c19-ab8f-dacde1b84041
-    # permissions:
-    #   - user_name: kristoffer.laiz@gmail.com
-    #     level: CAN_MANAGE
+    permissions:
+      - user_name: kristoffer.laiz@gmail.com
+        level: CAN_MANAGE
