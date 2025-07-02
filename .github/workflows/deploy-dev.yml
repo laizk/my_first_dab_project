@@ -44,7 +44,7 @@ jobs:
         env:
            DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
            DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }} 
-           DATABRICKS_SERVERLESS_MODE: true    
+           DATABRICKS_SERVERLESS_COMPUTE_ID: auto    
         run: |
           # Run the tests defined in the package.
           # This will automatically discover and run tests in the "tests" directory.
